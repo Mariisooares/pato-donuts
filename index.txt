@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pato Donuts</title>
+    <link rel="shortcut icon" href="imagens/donutt.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root{
+            --primary:#362C2A;
+            --secundary:#B0E0E6;
+            --accent: #FFB6C1;
+            --light: #F5F5DC;
+        }
+        body{
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--light);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4{
+            font-family: 'Titillium Web', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .container{
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            
+        }
+        .btn{
+            display: inline-block;
+            background: var(--secundary);
+            color: var(--primary);
+            padding: 5px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+        }
+        
+        .btn:hover{
+            background-color: var(--accent);
+            color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px #FFB6C1;
+        }
+        
+        /*Header*/
+
+        header{
+            background-color: var(--primary);
+            color: #F5F5DC;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px #362C2A;
+        }
+
+        .header-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;         
+            align-items: center;   
+            gap: 15px; 
+        }
+
+        .logo h1{
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+
+        .logo span{
+            color: var(--light);
+        }
+        
+        nav ul{
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li{
+            margin-left: 25px;
+        }
+
+        nav ul li a{
+            color: #F5F5DC;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover{
+            color: var(--accent);
+        }
+
+        nav ul li a::after{
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        nav ul li a:hover::after{
+            width: 100%;
+        }
+
+        .mobile-menu{
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /*Hero Section*/
+
+        .hero{
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(imagens/loja.jpg) center/cover no-repeat;;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+        }
+
+        .hero-content{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero h2{
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .hero p{
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /*Sobre*/
+
+        .about{
+            padding: 100px 0;
+            background-color: #F5F5DC;
+        }
+
+        .section-title{
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2{
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after{
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--header-->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!--<i class="fas fa-cut"></i>-->
+                <h1>Pato <Span>Donuts</Span></h1>
+                <img src="imagens/pato sem texto.png" alt="logo pato donuts sem texto" style="width: 100px;">
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#products">Nossos Donuts</a></li>
+                    <li><a href="#contact">Contato e Localização</a></li>
+                    <li><a href="#order">Faça seu pedido</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!--Hero Section-->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <h2>A sua dose diária de felicidade!</h2>
+            <p>Mais do que uma doceria, somos um cantinho de bons momentos. 
+                Seja para começar o dia com o pé direito, para uma pausa no meio da tarde ou para celebrar, um Pato Donuts é sempre a escolha certa. 
+                <br>Nossos donuts são feitos com uma pitada de carinho e os ingredientes mais frescos, prontos para adoçar sua vida.
+                Venha experimentar e encontre o seu novo vício!</p>
+            <a href="#contact" class="btn" >Contato e Localização</a>
+        </div>
+    </section>
+    <!--Sobre-->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Há 03 anos criando os melhores sabores para deixar sua vida mais doce</h3>
+                    <p>Tudo começou em 2022 com um sonho simples: criar um lugar onde cada mordida fosse um convite à felicidade. 
+                       <br>Assim nasceu a Pato Donuts, da vontade de transformar ingredientes de qualidade em momentos extraordinários, 
+                       deixando a vida de todos mais leve e, claro, muito mais doce.</p>
+                    <p>Por trás de cada vitrine recheada, existe uma equipe de verdadeiros artesãos do sabor. 
+                       <br>Somos curiosos, criativos e apaixonados por unir a tradição das receitas que aquecem o coração com as tendências que surpreendem o paladar. 
+                       <br>Para nós, cada donut é uma pequena obra de arte esperando para fazer parte do seu dia.</p>                        
+                    <p>E para que a experiência fosse completa, projetamos nosso cantinho para ser o seu refúgio. 
+                       Um ambiente aconchegante, com conforto e estilo, ideal para uma pausa, um encontro ou simplesmente para se presentear.</p>                                             
+                    <a href="#products" class="btn">Nossos Donuts</a>
+                </div>
+                <div class="about-image">
+                    <img src="imagens/Adobe Express - file.jpg" alt="lorem ipsum"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Produtos-->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Donuts</h2>
+            </div>
+
+            <div class="products-grid">
+                <div class="products-card">
+                    <div class="products-icon">
+                      <i class="material-symbols-outlined">donut_large</i> 
+                    </div>
+                    <h3>Bate Coração</h3>
+                    <h4>Donut de Morango com Granulados</h4>
+                    <img src="imagens/Bate coração final.jpg" alt="donut com cobertura de morango e granulados coloridos">
+                    <p>Um xote de alegria! A cobertura num é de brincadeira não, visse? 
+                       É um creme de morango fresco que só a gota, no ponto certo entre o doce e o azedinho. 
+                       Pra festança ficar completa, tem um granulado colorido por cima que chega a dar um estalo na alma. 
+                       É o clássico com o nosso jeitinho.</p>
+                    <div class="price">R$ 12,99</div>
+                </div>
+                <div class="product-card">
+                    <div class="products-icon">
+                        <i class="fas fa-air-freshener"></i>
+                        
+                    </div>
+                    <h3>Veludo Negro</h3>
+                    <h4>Donut de Chocolate Belga</h4>
+                    <img src="imagens/Veludo Belga2.jpg" alt="donut com cobertura de chocolate belga">
+                    <p>Uma joia de sabor profundo e textura aveludada. 
+                       Usamos autêntico chocolate belga em uma ganache rica e brilhante, que cobre nossa massa de cacau. 
+                       É finalizado com raspas finas do mesmo chocolate nobre. Intenso, elegante e para paladares exigentes</p>
+                    <div class="price">R$ 20</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <h3>Brisa de Pistache</h3>
+                    <img src="imagens/Pistache.jpg" alt="donut com cobertura de pistache">
+                    <p>Leve e surpreendente como uma brisa. 
+                       A cobertura é feita com pasta de pistache 100% pura, sem corantes, revelando um sabor genuíno e uma cor delicada. 
+                       Coroamos com pedaços de pistache torrado, que trazem um toque crocante. 
+                       É a prova de que a sofisticação está na simplicidade</p>
+                    <div class="price">R$ 25</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Afago</h3>
+                    <h4>Donut de Ninho com Nutella</h4>
+                    <img src="imagens/Ninho com Nutella.jpg" alt="donut de ninho com recheio de nutella">
+                    <p>Esse donut é um abraço. No coração da nossa massa fofinha, um recheio generoso de Nutella®. 
+                       Por fora, uma cobertura cremosa de brigadeiro de Leite Ninho® que conforta a alma. 
+                       É o sabor do carinho, do mimo, de um verdadeiro afago.</p>
+                    <div class="price">R$ 20</div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-paint-br"></i>
+                        </div>
+                    </div>
+                    <h3>Melodia Crocante</h3>
+                    <h4>Donut de Doce de Leite com Amêndoas</h4>
+                    <img src="imagens/Melodia Crocante.jpg" alt="donut de doce de leite com amêndoas na cobertura">
+                    <p>Uma harmonia perfeita de texturas. O recheio é um doce de leite artesanal, suave e cremoso. 
+                       A cobertura de caramelo salgado entra em sintonia com a crocância das lascas de amêndoas torradas. 
+                       Cada mordida é uma melodia diferente.</p>
+                    <div class="price">R$ 15</div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                    </div>
+                    <h3>Combo Família</h3>
+                    <img src="imagens/combo.jpg" alt="">
+                    <p>A experiência completa do Pato Donuts em uma caixa. Uma seleção especial com 6 donuts pensada para te levar a uma viagem de sabores e texturas. 
+                       A caixa inclui: 2 Afagos, 1 Veludo Belga, 1 Brisa de Pistache, 1 Melodia Crocante e 1 Bate Coração.</p>
+                    <div class="price">R$ 69,90</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="gallery" id="gallery">
+        <div class="container">
+           <div class="section-title">
+                <h2>Nossa Galeria</h2>
+           </div> 
+           <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="imagens/ambiente acomchegante.jpg" alt="Corte de barba">
+                </div>
+                <div class="gallery-item">
+                    <img src="imagens/relaxar.jpg" alt="Corte de cabelo">
+                </div>
+                <div class="gallery-item">
+                    <img src="imagens/produtos loja.jpg" alt="Escovando o cabelo">
+                </div>
+                <div class="gallery-item">
+                    <img src="imagens/donuts e café.jpg" alt="produtos barbearia">
+                </div>
+                <div class="gallery-item">
+                    <img src="imagens/veludo belga (2).jpg" alt="tratando a barba">
+                </div>
+                <div class="gallery-item">
+                    <img src="imagens/afago e pessoa.jpg" alt="fazendo a barba">
+                </div>
+           </div>
+        </div>
+    </section>
+    <!--Contato-->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Entre em contato</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Endereço</h4>
+                            <p>Avenida Bernardo Vieira de Melo, 548 <br> Jaboatão dos Guararapes, PE</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Telefone</h4>
+                            <p>(81)2345678</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>E-mail</h4>
+                                <p>patodonuts@email.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Horário de funcionamento</h4>
+                                <p>Segunda à Sexta das 9h às 19h</p>
+                            </div>
+                        </div>    
+                    </div>
+                        <div class="contact-form">
+                            <h3>Faça seu pedido</h3>
+                            <form method="get">
+                                <div class="form-group">
+                                    <input type="text" name="pedido" placeholder="Digite aqui seu pedido">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Digite seu e-mail">
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" placeholder="Seu contato">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Confirme seu pedido">
+                                </div>
+                                <div class="form-group">
+                                    <textarea placeholder="Observações"></textarea>
+                                </div>
+                                <button type="submit" class="btn">Enviar</button>
+                            </form>
+                        </div>                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-cut"></i>
+                    <h1>Pato <span>Donuts</span></h1>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1EszAugSMM/"><i class="fab fa-facebook-f"></i>Facebook</a><br>
+                    <a href="https://www.instagram.com/o_mldocorte?igsh=MWt0cjJydG5uM2c1OA=="><i class="fab fa-instagram"></i>Instagram</a><br>
+                    <a href="https://wa.me/+55812345678"><i class="fab fa-whatsapp"></i>Whatsapp</a><br>
+                    <a href="#"><i class="fab fa-twitter"></i>X</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy;2025Pato Donuts. Todos os direitos reservados
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
