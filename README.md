@@ -9,7 +9,7 @@ Este projeto foi desenvolvido para disciplina de Fundamentos de Desenvolvimento 
 
 ## 📸 Demonstração
 
-![Preview do site](imagens/loja.jpg)
+![Preview do site](imagens/site.png)
 
 ---
 
@@ -27,7 +27,7 @@ Este projeto foi desenvolvido para disciplina de Fundamentos de Desenvolvimento 
 ✔️ Site responsivo  
 ✔️ Seções: Home, Sobre, Nossos Donuts, Galeria, Contato e Localização  
 ✔️ Formulário de pedido com alerta de confirmação  
-✔️ Ícones de redes sociais + botão flutuante do WhatsApp  
+✔️ Ícones de redes sociais  
 
 ---
 
